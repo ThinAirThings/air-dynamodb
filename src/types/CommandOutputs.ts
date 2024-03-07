@@ -14,6 +14,7 @@ export type GetCommandOutput<T> = {
 export type BatchGetCommandOutput<T> = {
     Responses?: Record<string, T[]>
 };
+
 export type PutCommandOutput = {
     Attributes?: Record<string, any>
 };
