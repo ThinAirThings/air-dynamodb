@@ -4,7 +4,7 @@ import { BatchGetCommandOutput, DeleteCommandOutput, GetCommandOutput, PutComman
 
 
 const _dynamodb = () => {
-    console.log("Creating")
+    console.log("Running")
     return DynamoDBDocument.from(
         new DynamoDBClient({
             region: 'us-east-1'
