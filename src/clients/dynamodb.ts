@@ -4,7 +4,6 @@ import { BatchGetCommandOutput, DeleteCommandOutput, GetCommandOutput, PutComman
 
 
 const _dynamodb = () => {
-    console.log("Running")
     return DynamoDBDocument.from(
         new DynamoDBClient({
             region: 'us-east-1'
@@ -14,15 +13,19 @@ const _dynamodb = () => {
 
 
 export const dynamodb = {
-    scan: async <T extends Record<string, any>>(input: Parameters<ReturnType<typeof _dynamodb>['scan']>[0]): Promise<ScanCommandOutput<T>> => 
-        _dynamodb().scan(input) as Promise<ScanCommandOutput<T>>,
+    scan: async <T extends Record<string, any>>(input: Parameters<ReturnType<typeof _dynamodb>['scan']>[0]): Promise<ScanCommandOutput<T>> => {
+        return (await _dynamodb().scan(input)) as ScanCommandOutput<T>;
+    },
     query: async <T extends Record<string, any>>(input: Parameters<ReturnType<typeof _dynamodb>['query']>[0]): Promise<QueryCommandOutput<T>> => 
         _dynamodb().query(input) as Promise<QueryCommandOutput<T>>,
     get: async <T extends Record<string, any>>(input: Parameters<ReturnType<typeof _dynamodb>['get']>[0]): Promise<GetCommandOutput<T>> =>
         _dynamodb().get(input) as Promise<GetCommandOutput<T>>,
     batchGet: async <T extends Record<string, any>>(input: Parameters<ReturnType<typeof _dynamodb>['batchGet']>[0]): Promise<BatchGetCommandOutput<T>> =>
         _dynamodb().batchGet(input) as Promise<BatchGetCommandOutput<T>>,
-    put: async (input: Parameters<ReturnType<typeof _dynamodb>['put']>[0]): Promise<PutCommandOutput> =>
+    put: async <T extends Record<string, any>>(input: {
+        TableName: string
+        Item: T
+    }): Promise<PutCommandOutput> =>
         _dynamodb().put(input) as Promise<PutCommandOutput>,
     update: async (input: Parameters<ReturnType<typeof _dynamodb>['update']>[0]): Promise<UpdateCommandOutput> =>
         _dynamodb().update(input) as Promise<UpdateCommandOutput>,
