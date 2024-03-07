@@ -27,6 +27,7 @@ export const dynamodb = {
         Item: T
     }): Promise<PutCommandOutput> =>
         _dynamodb().put(input) as Promise<PutCommandOutput>,
+
     update: async (input: Parameters<ReturnType<typeof _dynamodb>['update']>[0]): Promise<UpdateCommandOutput> =>
         _dynamodb().update(input) as Promise<UpdateCommandOutput>,
     delete: async (input: Parameters<ReturnType<typeof _dynamodb>['delete']>[0]): Promise<DeleteCommandOutput> =>
