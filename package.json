@@ -1,0 +1,26 @@
+{
+    "name": "@thinairthings/air-dynamodb",
+    "version": "0.1.1",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsup",
+        "npmpub": "npm run build && git add . && git commit -m \"mod\" && git push && npm version patch && npm publish --access public",
+        "format": "npx prettier --write ."
+    },
+    "files": [
+        "dist"
+    ],
+    "devDependencies": {
+        "@types/node": "20.6.3",
+        "tsup": "^7.2.0",
+        "typescript": "~5.2.2"
+    },
+    "peerDependencies": {},
+    "keywords": [],
+    "author": "Dan Lannan",
+    "dependencies": {
+        "@aws-sdk/lib-dynamodb": "^3.484.0",
+        "@aws-sdk/client-dynamodb": "^3.484.0"
+    }
+}
