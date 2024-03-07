@@ -3,11 +3,14 @@ import { DynamoDBDocument  } from "@aws-sdk/lib-dynamodb";
 import { BatchGetCommandOutput, DeleteCommandOutput, GetCommandOutput, PutCommandOutput, QueryCommandOutput, ScanCommandOutput, UpdateCommandOutput } from "../types/CommandOutputs";
 
 
-const _dynamodb = () => DynamoDBDocument.from(
-    new DynamoDBClient({
-        region: 'us-east-1'
-    }),
-);
+const _dynamodb = () => {
+    console.log("Creating")
+    return DynamoDBDocument.from(
+        new DynamoDBClient({
+            region: 'us-east-1'
+        }),
+    );
+}
 
 
 export const dynamodb = {
