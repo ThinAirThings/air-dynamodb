@@ -11,6 +11,10 @@
     "files": [
         "dist"
     ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ThinAirThings/air-dynamodb.git"
+    },
     "devDependencies": {
         "@types/node": "20.6.3",
         "tsup": "^7.2.0",
