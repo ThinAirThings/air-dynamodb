@@ -4,7 +4,9 @@ import { BatchGetCommandOutput, DeleteCommandOutput, GetCommandOutput, PutComman
 
 
 const _dynamodb = DynamoDBDocument.from(
-    new DynamoDBClient({}),
+    new DynamoDBClient({
+        region: 'us-east-1'
+    }),
 );
 
 export const dynamodb = {
