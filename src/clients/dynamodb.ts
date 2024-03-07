@@ -9,6 +9,7 @@ const _dynamodb = () => DynamoDBDocument.from(
     }),
 );
 
+
 export const dynamodb = {
     scan: async <T extends Record<string, any>>(input: Parameters<ReturnType<typeof _dynamodb>['scan']>[0]): Promise<ScanCommandOutput<T>> => 
         _dynamodb().scan(input) as Promise<ScanCommandOutput<T>>,
